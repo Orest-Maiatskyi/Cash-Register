@@ -11,7 +11,7 @@
             <p class="eng-lang"><myTags:Dictionary language="eng" wordKey="words.email">Email</myTags:Dictionary>:</p>
             <p class="rus-lang"><myTags:Dictionary language="rus" wordKey="words.email">Email</myTags:Dictionary>:</p>
         </label>
-        <input id="update-good-code" list="update-codes-list" value="" class="custom-select">
+        <input id="deleteEmail" list="update-codes-list" value="" class="custom-select">
         <datalist id="update-codes-list"></datalist>
     </div>
     <div id="deleteUserBtn" type="button" class="btn btn-primary" value="">
