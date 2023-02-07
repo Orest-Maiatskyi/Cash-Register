@@ -31,7 +31,7 @@ public class AdminFilter  implements Filter {
         String path = req.getRequestURI();
         UserBean user = (UserBean) req.getSession().getAttribute("USER");
 
-        if (user != null && user.getRole().equals("cashier")) {
+        if (user != null && user.getRole().equals("admin")) {
             if (path.startsWith("/login") || path.startsWith("/logout") || path.startsWith("/workbench"))
                 filterChain.doFilter(servletRequest, servletResponse);
             else if (path.startsWith("/frontController")) {
