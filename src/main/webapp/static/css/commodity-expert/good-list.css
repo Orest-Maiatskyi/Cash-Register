@@ -1,0 +1,76 @@
+
+#good-list .rows-per-page-cont, #good-list .sort-by {
+    display: inline-block;
+    margin: 20px;
+}
+
+#good-list .rows-per-page-cont label, #good-list .sort-by {
+    margin: 0px;
+}
+
+#good-list .rows-per-page-cont select, #good-list .sort-by select {
+    display: inline-block;
+    width: 150px;
+}
+
+#good-list nav {
+    display: inline-block;
+}
+
+
+#good-list .input-group {
+    width: 200px;
+    float: right;
+    margin: 20px;
+}
+
+#good-list .control-panel {
+    line-height: 2.2;
+}
+
+
+
+
+
+/* скрываем чекбоксы и блоки с содержанием */
+.hide {
+    display: none;
+}
+.hide + label ~ div{
+    display: none;
+}
+/* оформляем текст label */
+.hide + label {
+    border-bottom: 1px dotted green;
+    padding: 0;
+    color: green;
+    cursor: pointer;
+    display: inline-block;
+}
+/* вид текста label при активном переключателе */
+.hide:checked + label {
+    color: red;
+    border-bottom: 0;
+}
+/* когда чекбокс активен показываем блоки с содержанием  */
+.hide:checked + label + div {
+    display: block;
+    width: 300px;
+}
+
+
+#good-list .reload-btn {
+    float: right;
+    width: 38px;
+    height: 38px;
+    margin: 20px;
+    transition-duration: 1s;
+    cursor: grab;
+}
+
+#good-list .reload-btn:hover {
+    float: right;
+    transform: rotate(180deg);
+}
+
+

@@ -1,0 +1,33 @@
+<taglib>
+    <tlib-version>1.0</tlib-version>
+    <jsp-version>2.0</jsp-version>
+    <short-name>customTags</short-name>
+
+    <tag>
+        <name>Dictionary</name>
+        <tag-class>com.epam.cashregister.services.tagservices.DictionaryTag</tag-class>
+        <body-content>scriptless</body-content>
+
+        <attribute>
+            <name>language</name>
+            <required>true</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+
+        <attribute>
+            <name>wordKey</name>
+            <required>true</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+    </tag>
+
+    <tag>
+        <name>Hello</name>
+        <tag-class>com.epam.cashregister.services.tagservices.HelloTag</tag-class>
+        <body-content>scriptless</body-content>
+
+        <attribute>
+            <name>message</name>
+        </attribute>
+    </tag>
+</taglib>

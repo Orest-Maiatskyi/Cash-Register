@@ -1,0 +1,21 @@
+input::-webkit-calendar-picker-indicator {
+  opacity: 0;
+}
+
+.write-off-good-form {
+	width: 80%;
+	max-width: 1000px;
+	margin: 0 auto;
+}
+
+.write-off-good-form p {
+    margin: 0px;
+}
+
+.write-off-good-form label {
+	color: #fff;
+}
+
+.control-label {
+    display: block;
+}

@@ -1,0 +1,135 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa&family=Roboto:wght@300&display=swap');
+
+* {
+    font-family: 'Comfortaa', cursive;
+    font-family: 'Roboto', sans-serif;
+}
+
+/*
+*
+* ==========================================
+* FOR MULTI LANGUAGE SUPPORT
+* ==========================================
+*
+*/
+
+
+.eng-lang {
+    display: block;
+}
+
+.rus-lang {
+    display: block;
+}
+
+.lang-btn {
+    width: 100%;
+    height: 40px;
+    border-radius: 5px;
+    background: #f8f9fa;
+    line-height: 40px;
+    text-align: center;
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none;   /* Chrome/Safari/Opera */
+    -khtml-user-select: none;    /* Konqueror */
+    -moz-user-select: none;      /* Firefox */
+    -ms-user-select: none;       /* Internet Explorer/Edge */
+    user-select: none;           /* Non-prefixed version, currently
+                                      not supported by any browser */
+}
+
+.lang-btn:hover {
+    background: #fff;
+}
+
+/*
+*
+* ==========================================
+* CUSTOM UTIL CLASSES
+* ==========================================
+*
+*/
+
+.vertical-nav {
+  min-width: 17rem;
+  width: 17rem;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.1);
+  transition: all 0.4s;
+}
+
+.page-content {
+  width: calc(100% - 17rem);
+  margin-left: 17rem;
+  transition: all 0.4s;
+}
+
+.vertical-nav .nav-item {
+    height: 50px;
+}
+
+/* for toggle behavior */
+
+#sidebar.active {
+  margin-left: -17rem;
+}
+
+#content.active {
+  width: 100%;
+  margin: 0;
+}
+
+
+/*
+*
+* ==========================================
+* FOR SLIDER
+* ==========================================
+*
+*/
+
+.active-sidebar-link {
+    background-color: #ededed;
+}
+
+.action {
+    display: none;
+}
+
+.active {
+    display: block;
+}
+
+/*
+*
+* ==========================================
+* FOR DEMO PURPOSE
+* ==========================================
+*
+*/
+
+body {
+  background: #599fd9;
+  background: -webkit-linear-gradient(to right, #599fd9, #c2e59c);
+  background: linear-gradient(to right, #599fd9, #c2e59c);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+.separator {
+  margin: 3rem 0;
+  border-bottom: 1px dashed #fff;
+}
+
+.text-uppercase {
+  letter-spacing: 0.1em;
+}
+
+.text-gray {
+  color: #aaa;
+}
+

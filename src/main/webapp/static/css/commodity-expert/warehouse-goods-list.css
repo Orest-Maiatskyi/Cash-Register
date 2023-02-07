@@ -1,0 +1,42 @@
+#warehouse-goods-list .rows-per-page-cont, #warehouse-goods-list .sort-by {
+    display: inline-block;
+    margin: 20px;
+}
+
+#warehouse-goods-list .rows-per-page-cont label, #warehouse-goods-list .sort-by {
+    margin: 0px;
+}
+
+#warehouse-goods-list .rows-per-page-cont select, #warehouse-goods-list .sort-by select {
+    display: inline-block;
+    width: 150px;
+}
+
+#warehouse-goods-list nav {
+    display: inline-block;
+}
+
+
+#warehouse-goods-list .input-group {
+    width: 200px;
+    float: right;
+    margin: 20px;
+}
+
+#warehouse-goods-list .control-panel {
+    line-height: 2.2;
+}
+
+#warehouse-goods-list .reload-btn {
+    float: right;
+    width: 38px;
+    height: 38px;
+    margin: 20px;
+    transition-duration: 1s;
+    cursor: grab;
+}
+
+#warehouse-goods-list .reload-btn:hover {
+    float: right;
+    transform: rotate(180deg);
+}
