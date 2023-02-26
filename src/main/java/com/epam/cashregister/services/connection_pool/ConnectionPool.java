@@ -52,7 +52,6 @@ public class ConnectionPool {
     public static Manager manager;
 
     public static synchronized java.sql.Connection borrowConnection() {
-
         // if (pool == null) pool = new Vector<>();
 
         Connection loanConnection = null;
@@ -82,7 +81,6 @@ public class ConnectionPool {
     }
 
     public static synchronized void returnConnection(java.sql.Connection connection) {
-
         // if (pool != null) {
             for (Connection pooledConnection : pool) {
                 if (pooledConnection.getConnection() == connection) {
