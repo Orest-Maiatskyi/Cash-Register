@@ -17,6 +17,12 @@ public class UserDaoImpl implements UserDao {
     private PreparedStatement preparedStatement;
     private ResultSet resultSet;
 
+    public UserDaoImpl() {  }
+
+    public UserDaoImpl(Connection connection) {
+        this.connection = connection;
+    }
+
     @Override
     public boolean addUser(UserBean userBean) {
 
@@ -24,7 +30,7 @@ public class UserDaoImpl implements UserDao {
         boolean isCorrect = true;
 
         try {
-            connection = ConnectionPool.borrowConnection();
+            connection = connection == null ? ConnectionPool.borrowConnection() : connection;
             preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setInt(1, userBean.getRoleId());
             preparedStatement.setString(2, userBean.getFirstName());
@@ -34,7 +40,10 @@ public class UserDaoImpl implements UserDao {
             preparedStatement.setString(6, userBean.getPasswordHash());
 
             if (preparedStatement.executeUpdate() == 0) isCorrect = false;
-        } catch (SQLException e) { e.printStackTrace(); }
+        } catch (SQLException e) {
+            isCorrect = false;
+            e.printStackTrace();
+        }
         finally {
             try {
                 if (preparedStatement != null) preparedStatement.close();
@@ -56,12 +65,14 @@ public class UserDaoImpl implements UserDao {
         boolean isCorrect = true;
 
         try {
-            connection = ConnectionPool.borrowConnection();
+            connection = connection == null ? ConnectionPool.borrowConnection() : connection;
             preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setString(1, userBean.getEmail());
             if (preparedStatement.executeUpdate() == 0) isCorrect = false;
-        } catch (SQLException e) { e.printStackTrace(); }
-        finally {
+        } catch (SQLException e) {
+            isCorrect = false;
+            e.printStackTrace();
+        } finally {
             try {
                 if (preparedStatement != null) preparedStatement.close();
                 if (connection != null) ConnectionPool.returnConnection(connection);
@@ -77,7 +88,7 @@ public class UserDaoImpl implements UserDao {
         String sql = UserQueries.selectAllUsers;
 
         try {
-            connection = ConnectionPool.borrowConnection();
+            connection = connection == null ? ConnectionPool.borrowConnection() : connection;
             preparedStatement = connection.prepareStatement(sql);
             resultSet = preparedStatement.executeQuery();
 

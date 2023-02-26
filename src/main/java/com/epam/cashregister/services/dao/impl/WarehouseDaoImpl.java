@@ -18,6 +18,12 @@ public class WarehouseDaoImpl implements WarehouseDao {
 
     private int noOfRecords;
 
+    public WarehouseDaoImpl() {}
+
+    public WarehouseDaoImpl(Connection connection) {
+        this.connection = connection;
+    }
+
     @Override
     public boolean addGood(WarehouseBean warehouseBean) {
 
@@ -26,7 +32,7 @@ public class WarehouseDaoImpl implements WarehouseDao {
         boolean success = true;
 
         try {
-            connection = ConnectionPool.borrowConnection();
+            connection = connection == null ? ConnectionPool.borrowConnection() : connection;
             connection.setAutoCommit(false);
             preparedStatement = connection.prepareStatement(sql_1);
             preparedStatement.setInt(1, warehouseBean.getStorageBean().getId());
@@ -75,7 +81,7 @@ public class WarehouseDaoImpl implements WarehouseDao {
         boolean success = true;
 
         try {
-            connection = ConnectionPool.borrowConnection();
+            connection = connection == null ? ConnectionPool.borrowConnection() : connection;
             connection.setAutoCommit(false);
             preparedStatement = connection.prepareStatement(sql_1);
             preparedStatement.setInt(1, warehouseBean.getStorageBean().getId());
@@ -123,7 +129,7 @@ public class WarehouseDaoImpl implements WarehouseDao {
         ArrayList<String> codes = null;
 
         try {
-            connection = ConnectionPool.borrowConnection();
+            connection = connection == null ? ConnectionPool.borrowConnection() : connection;
             preparedStatement = connection.prepareStatement(sql);
             resultSet = preparedStatement.executeQuery();
 
@@ -141,7 +147,6 @@ public class WarehouseDaoImpl implements WarehouseDao {
         }
 
         return codes == null ? null : codes.toArray(new String[]{});
-
     }
 
     @Override
@@ -151,7 +156,7 @@ public class WarehouseDaoImpl implements WarehouseDao {
         ArrayList<StorageBean> storages = null;
 
         try {
-            connection = ConnectionPool.borrowConnection();
+            connection = connection == null ? ConnectionPool.borrowConnection() : connection;
             preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setString(1, goodCode);
             resultSet = preparedStatement.executeQuery();
@@ -186,7 +191,7 @@ public class WarehouseDaoImpl implements WarehouseDao {
         ArrayList<WarehouseBean> warehouseBeans = null;
 
         try {
-            connection = ConnectionPool.borrowConnection();
+            connection = connection == null ? ConnectionPool.borrowConnection() : connection;
             preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setString(1,likeData);
             preparedStatement.setInt(2, offset);
@@ -232,7 +237,7 @@ public class WarehouseDaoImpl implements WarehouseDao {
         float quantity = -1f;
 
         try {
-            connection = ConnectionPool.borrowConnection();
+            connection = connection == null ? ConnectionPool.borrowConnection() : connection;
             preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setInt(1, warehouseBean.getStorageBean().getId());
             preparedStatement.setString(2, warehouseBean.getGoodBean().getCode());
