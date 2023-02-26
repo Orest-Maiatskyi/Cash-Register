@@ -2,15 +2,10 @@ package com.epam.cashregister.contollers.servlets.frontcontroller.commands;
 
 import com.epam.cashregister.contollers.servlets.frontcontroller.FrontCommand;
 import com.epam.cashregister.entities.UserBean;
-import com.epam.cashregister.services.crypto.PBKDF2;
-import com.epam.cashregister.services.crypto.Util;
 import com.epam.cashregister.services.dao.impl.UserDaoImpl;
 import com.epam.cashregister.services.exceptions.ValidatorException;
 import com.epam.cashregister.services.utils.AjaxResponseWriter;
-import com.epam.cashregister.services.utils.PropertiesManager;
-import com.epam.cashregister.services.validateservice.Validator;
 import com.epam.cashregister.services.validateservice.ValidatorBuilder;
-import com.epam.cashregister.services.validateservice.validators.AddUserValidator;
 
 import javax.servlet.ServletException;
 import java.io.IOException;
