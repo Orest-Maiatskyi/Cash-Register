@@ -62,7 +62,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="password" class="text-info">Password:</label><br>
-                                    <input type="text" name="password" autocomplete="off" value="<%=password%>" id="password" class="form-control" required>
+                                    <input type="password" name="password" autocomplete="off" value="<%=password%>" id="password" class="form-control" required>
                                 </div>
                                 <div class="form-group">
                                     <label for="remember-me" class="text-info">
