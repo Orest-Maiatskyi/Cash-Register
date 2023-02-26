@@ -15,6 +15,12 @@ public class ReportDaoImpl implements ReportDao {
     private PreparedStatement preparedStatement;
     private ResultSet resultSet;
 
+    public ReportDaoImpl() { }
+
+    public ReportDaoImpl(Connection connection) {
+        this.connection = connection;
+    }
+
     @Override
     public OrderBean[] getIncomeGoods() {
 
@@ -22,7 +28,7 @@ public class ReportDaoImpl implements ReportDao {
         ArrayList<OrderBean> orderBeans = null;
 
         try {
-            connection = ConnectionPool.borrowConnection();
+            connection = connection == null ? ConnectionPool.borrowConnection() : connection;
             preparedStatement = connection.prepareStatement(sql);
             resultSet = preparedStatement.executeQuery();
 
@@ -58,7 +64,7 @@ public class ReportDaoImpl implements ReportDao {
         ArrayList<OrderBean> orderBeans = null;
 
         try {
-            connection = ConnectionPool.borrowConnection();
+            connection = connection == null ? ConnectionPool.borrowConnection() : connection;
             preparedStatement = connection.prepareStatement(sql);
             resultSet = preparedStatement.executeQuery();
 
@@ -93,7 +99,7 @@ public class ReportDaoImpl implements ReportDao {
         ArrayList<OrderBean> orderBeans = null;
 
         try {
-            connection = ConnectionPool.borrowConnection();
+            connection = connection == null ? ConnectionPool.borrowConnection() : connection;
             preparedStatement = connection.prepareStatement(sql);
             resultSet = preparedStatement.executeQuery();
 
@@ -127,7 +133,7 @@ public class ReportDaoImpl implements ReportDao {
         boolean success = true;
 
         try {
-            connection = ConnectionPool.borrowConnection();
+            connection = connection == null ? ConnectionPool.borrowConnection() : connection;
             connection.setAutoCommit(false);
 
             Statement statement = connection.createStatement();

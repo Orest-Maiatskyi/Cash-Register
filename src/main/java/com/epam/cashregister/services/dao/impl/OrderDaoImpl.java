@@ -25,6 +25,12 @@ public class OrderDaoImpl implements OrderDao {
     private static int lastOrderId;
     private int numOfRecords;
 
+    public OrderDaoImpl() { }
+
+    public OrderDaoImpl(Connection connection) {
+        this.connection = connection;
+    }
+
     @Override
     public boolean createOrder() {
 
@@ -33,7 +39,7 @@ public class OrderDaoImpl implements OrderDao {
         boolean success = true;
 
         try {
-            connection = ConnectionPool.borrowConnection();
+            connection = connection == null ? ConnectionPool.borrowConnection() : connection;
             preparedStatement = connection.prepareStatement(sql_1);
             int rowsAffected = preparedStatement.executeUpdate();
 
@@ -68,7 +74,7 @@ public class OrderDaoImpl implements OrderDao {
         boolean success = true;
 
         try {
-            connection = ConnectionPool.borrowConnection();
+            connection = connection == null ? ConnectionPool.borrowConnection() : connection;
             preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setInt(1, orderBean.getOrderId());
             preparedStatement.setString(2, orderBean.getGoodCode());
@@ -97,7 +103,7 @@ public class OrderDaoImpl implements OrderDao {
         boolean success = true;
 
         try {
-            connection = ConnectionPool.borrowConnection();
+            connection = connection == null ? ConnectionPool.borrowConnection() : connection;
             preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setFloat(1, orderBean.getQuantity());
             preparedStatement.setInt(2, orderBean.getOrderId());
@@ -126,7 +132,7 @@ public class OrderDaoImpl implements OrderDao {
         boolean success = true;
 
         try {
-            connection = ConnectionPool.borrowConnection();
+            connection = connection == null ? ConnectionPool.borrowConnection() : connection;
             connection.setAutoCommit(false);
             preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setInt(1, 2);
@@ -202,7 +208,7 @@ public class OrderDaoImpl implements OrderDao {
         boolean success = true;
 
         try {
-            connection = ConnectionPool.borrowConnection();
+            connection = connection == null ? ConnectionPool.borrowConnection() : connection;
             preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setInt(1, 3);
             preparedStatement.setInt(2, orderId);
@@ -229,7 +235,7 @@ public class OrderDaoImpl implements OrderDao {
         boolean success = true;
 
         try {
-            connection = ConnectionPool.borrowConnection();
+            connection = connection == null ? ConnectionPool.borrowConnection() : connection;
             preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setInt(1, orderBean.getOrderId());
             preparedStatement.setString(2, orderBean.getGoodCode());
@@ -264,7 +270,7 @@ public class OrderDaoImpl implements OrderDao {
         ArrayList<OrderBean> orderBeans = null;
 
         try {
-            connection = ConnectionPool.borrowConnection();
+            connection = connection == null ? ConnectionPool.borrowConnection() : connection;
             preparedStatement = connection.prepareStatement(sql);
             resultSet = preparedStatement.executeQuery();
 
@@ -296,7 +302,7 @@ public class OrderDaoImpl implements OrderDao {
         ArrayList<OrderBean> orderBeans = null;
 
         try {
-            connection = ConnectionPool.borrowConnection();
+            connection = connection == null ? ConnectionPool.borrowConnection() : connection;
             preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setInt(1, 1);
             resultSet = preparedStatement.executeQuery();
@@ -326,7 +332,7 @@ public class OrderDaoImpl implements OrderDao {
         String orderedCode = null;
 
         try {
-            connection = ConnectionPool.borrowConnection();
+            connection = connection == null ? ConnectionPool.borrowConnection() : connection;
             preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setInt(1, orderBean.getOrderId());
             preparedStatement.setString(2, orderBean.getGoodCode());
@@ -352,7 +358,7 @@ public class OrderDaoImpl implements OrderDao {
         ArrayList<String> codes = null;
 
         try {
-            connection = ConnectionPool.borrowConnection();
+            connection = connection == null ? ConnectionPool.borrowConnection() : connection;
             preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setInt(1, orderId);
             resultSet = preparedStatement.executeQuery();
@@ -380,7 +386,7 @@ public class OrderDaoImpl implements OrderDao {
         ArrayList<OrderBean> orderBeans = null;
 
         try {
-            connection = ConnectionPool.borrowConnection();
+            connection = connection == null ? ConnectionPool.borrowConnection() : connection;
             preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setInt(1, orderBean.getOrderId());
             resultSet = preparedStatement.executeQuery();
@@ -410,15 +416,13 @@ public class OrderDaoImpl implements OrderDao {
     @Override
     public OrderBean[] getOrderList(String likeData, String orderBy, int offset, int rowCount) {
 
-        // dirty magic, but it's ok because of strong validation on server side !
         String[] splitSql = OrderQueries.selectPaginatedOrderList.split("<&_&>");
         String sql = splitSql[0] + orderBy + splitSql[1];
-        // end of dirty magic
 
         ArrayList<OrderBean> orderBeans = null;
 
         try {
-            connection = ConnectionPool.borrowConnection();
+            connection = connection == null ? ConnectionPool.borrowConnection() : connection;
             preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setString(1,likeData);
             preparedStatement.setInt(2, offset);
