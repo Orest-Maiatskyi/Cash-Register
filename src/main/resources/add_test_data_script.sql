@@ -62,6 +62,12 @@ VALUES
     (2, "00000002", 5.0),
     (3, "00000003", 5.0);
 
+INSERT INTO `roles` (`role`, `actions`)
+VALUES
+    ("cashier", '{"MAIN": ["Order List"], "ORDERS": ["Create Order", "Add Good To Order", "Update Good Quantity", "Close Order"]}'),
+    ("senior cashier", '{"ORDERS": ["Cancel Order", "Cancel Ordered Good"], "REPORTS": ["Create X Report", "Create Z Report"]}'),
+    ("commodity expert", '{"MAIN": ["Good List", "Warehouse Goods List"], "GOODS": ["Create Good", "Update Good", "Add Good", "Write Off The Goods"]}');
+
 INSERT INTO `users` (`role_id`, `first_name`, `last_name`, `email`, `avatar`, `password_hash`)
 VALUES
     (1, "Steve", "Madden", "cashier@gmail.com", "base64encodedImageHere", "FX2VxVpXCCBTps/FPTYSplrMeKZbNL4G/atanC4PmD0="),
