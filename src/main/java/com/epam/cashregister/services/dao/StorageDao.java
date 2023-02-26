@@ -8,5 +8,6 @@ public interface StorageDao {
     StorageBean getStorageById(int id);
     StorageBean getStorageByAddress(String address);
     StorageBean[] getAllStorages();
-
+    boolean addStorage(StorageBean storageBean);
+    boolean deleteStorage(StorageBean storageBean);
 }
