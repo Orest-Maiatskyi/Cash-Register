@@ -28,6 +28,7 @@ CREATE TABLE `goods` (
 CREATE TABLE `storages` (
   `id` int NOT NULL AUTO_INCREMENT,
   `address` varchar(255) DEFAULT NULL,
+  UNIQUE KEY `address` (`address`),
   PRIMARY KEY (`id`)
 );
 
