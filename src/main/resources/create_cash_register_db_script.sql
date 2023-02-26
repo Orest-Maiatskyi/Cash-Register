@@ -138,7 +138,7 @@ INSERT INTO `roles` (`role`, `actions`)
 VALUES
     ("cashier", '{"MAIN": ["Order List"], "ORDERS": ["Create Order", "Add Good To Order", "Update Good Quantity", "Close Order"]}'),
     ("senior cashier", '{"ORDERS": ["Cancel Order", "Cancel Ordered Good"], "REPORTS": ["Create X Report", "Create Z Report"]}'),
-    ("commodity expert", '{"MAIN": ["Good List", "Warehouse Goods List"], "GOODS": ["Create Good", "Update Good", "Add Good", "Write Off The Goods"]}'),
+    ("commodity expert", '{"MAIN": ["Good List", "Warehouse Goods List"], "GOODS": ["Create Good", "Update Good", "Add Good", "Write Off The Goods"], "STORAGES": ["Add Storage", "Delete Storage"]}'),
     ("admin", '{"USERS": ["Add User", "Delete User"]}');
 
 
