@@ -7,7 +7,7 @@
 <link href="../../static/css/cashier/order-list.css" rel="stylesheet" type="text/css" />
 
 
-<div id="cashier-order-list" class="acrylic shadow action-form cashier-form order-list-form">
+<div id="cashier-order-list" class="acrylic shadow action-form cashier-form order-list-form" style="max-width: 2000px;">
 
     <img class="reload-btn" action="reload" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADQAAAA0CAYAAADFeBvrAAAACXBIWXMAAAsTAAALEwEAmpwYAAAC4UlEQVR4nO2aW4hNYRTHfw3jTG4z406ThBApxqgpiiYPePMgyiWmQR5EeVBye5jGPCh5cMtlRC65lPLkQS5NTAqJKCkxklEMjUvGcPTVOrXb7XPbe337nL07v1pPp9Y+/3PWXvu/1reheFgONBAjbgPvgSpiwGigD0gCJ4gBm0VMKpYQcW65BJnSqyaijAD+uASZOEmR0h+oAeY4YjowUD7f4CHGxD9gMUVAJbAWaANeAX/TfGETn4AvGT5/J/kKwizgEvArwxf0E6fCFjIOuCwloimkIF1vFdBtUUhSotN26ZUBB0IQknTEaVti+skNnyxALLUh6FiBxCRteL0tOVz0A3AfuCZd7ybwEPioJKpNS8yMNC25F7gOrAMmZMlRI2PChYDtvSGomHLgkStpF7ADGOkzZ7sPIV3AXo2y2+5I+hPYCQwKkG+YY1zIJV4CG4EKFBgiv4xJfAeYqpBzZY5C2qVETWdVYzfwXe4RLc5kENEnzcSYWCtO+S4wU/mh7NXxfgNnlSogLcMtDFp1LiFfgf3AGCLKHkfH2hflyTTFYWCTVscqUaJEtLah84gBE4FDwA9xGZFlLnDFtbaqV75GtTgNq8wHbnhYmW5lUzkFOI8lzHy0BniawWReVbzeMuAb0IQyg4FtwNscrL9xAxqjy3HJ9wYYgBKjgGbgcx5DmWkOQf+VTke+Rg0hk4GjMqXmMyq/DnDNhR7j+T2NZmBGhx6fS4wXeQ5oVVKijz1y9QCTUMK5S/ATz4EjMu0ucBynLALWAy3Agyz7hSYUMW23I6CoIHEQC0yzcESS6zFKGZbYFbKYVtuOoBx4EoIQc5q3gpCYLWtfG0KM/7sIjCVkmpWFGEd+TnlNlhcJ4FmWkkltWb2iV9a65m2R1cBQioC6NO8VOP1bhSwMU8+dWjmLtW79/dKS5j6I7LIw4VF6ZmUcaWpdXW8rMaBVxJh3FMYTAxJiQM0Zamyolym2KPgPbgOQGKAmunQAAAAASUVORK5CYII=">
 
