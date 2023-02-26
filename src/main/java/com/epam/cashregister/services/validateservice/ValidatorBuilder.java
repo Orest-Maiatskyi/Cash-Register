@@ -71,6 +71,7 @@ public class ValidatorBuilder implements Validator {
     public Validator validateGoodPrice(float goodPrice) throws ValidatorException {
         String exception = null;
 
+        if (goodPrice == 0.0f) exception = "Invalid good price.";
         if (goodPrice < 0f) exception = "Invalid good price.";
 
         if (exception != null) throw new ValidatorException(exception);
@@ -81,6 +82,7 @@ public class ValidatorBuilder implements Validator {
     public Validator validateGoodQuantity(float goodQuantity) throws ValidatorException {
         String exception = null;
 
+        if (goodQuantity == 0.0f) exception = "Invalid good quantity.";
         if (goodQuantity < 0f) exception = "Invalid good quantity.";
 
         if (exception != null) throw new ValidatorException(exception);
