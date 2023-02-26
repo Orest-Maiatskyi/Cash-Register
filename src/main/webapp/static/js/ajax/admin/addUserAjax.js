@@ -76,10 +76,10 @@ $(document).ready(function() {
 
         } else if (icon !== undefined) {
 
-            if (icon.size > 5000) {
+            if (icon.size > 1048576) {
                 new Toast({
                     title: false,
-                    text: "Icon is to big. Max image size is 5000.",
+                    text: "Icon is to big. Max image size is 1MB.",
                     theme: "warning",
                     autohide: true,
                     interval: 3000,
