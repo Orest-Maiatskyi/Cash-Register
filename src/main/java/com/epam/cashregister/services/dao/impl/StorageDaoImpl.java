@@ -3,6 +3,7 @@ package com.epam.cashregister.services.dao.impl;
 import com.epam.cashregister.entities.StorageBean;
 import com.epam.cashregister.services.connection_pool.ConnectionPool;
 import com.epam.cashregister.services.dao.StorageDao;
+import com.epam.cashregister.services.dao.queries.GoodQueries;
 import com.epam.cashregister.services.dao.queries.StorageQueries;
 
 import java.sql.*;
@@ -13,6 +14,12 @@ public class StorageDaoImpl implements StorageDao {
     private Connection connection;
     private PreparedStatement preparedStatement;
     private ResultSet resultSet;
+
+    public StorageDaoImpl() { }
+
+    public StorageDaoImpl(Connection connection) {
+        this.connection = connection;
+    }
 
     @Override
     public StorageBean getStorageById(int id) {
@@ -26,7 +33,7 @@ public class StorageDaoImpl implements StorageDao {
         StorageBean storageBean = null;
 
         try {
-            connection = ConnectionPool.borrowConnection();
+            connection = connection == null ? ConnectionPool.borrowConnection() : connection;
             preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setString(1, address);
             resultSet = preparedStatement.executeQuery();
@@ -56,7 +63,7 @@ public class StorageDaoImpl implements StorageDao {
         ArrayList<StorageBean> storageBeans = null;
 
         try {
-            connection = ConnectionPool.borrowConnection();
+            connection = connection == null ? ConnectionPool.borrowConnection() : connection;
             preparedStatement = connection.prepareStatement(sql);
             resultSet = preparedStatement.executeQuery();
 
@@ -78,6 +85,55 @@ public class StorageDaoImpl implements StorageDao {
         }
 
         return storageBeans == null ? null :storageBeans.toArray(new StorageBean[0]);
+    }
+
+    @Override
+    public boolean addStorage(StorageBean storageBean) {
+
+        String sql = StorageQueries.insertIntoStorages;
+        boolean isSuccess = true;
+
+        try {
+            connection = ConnectionPool.borrowConnection();
+            preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setString(1, storageBean.getAddress());
+            if (preparedStatement.executeUpdate() == 0) isSuccess = false;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            isSuccess = false;
+        } finally {
+            try {
+                if (resultSet != null) resultSet.close();
+                if (preparedStatement != null) preparedStatement.close();
+                if (connection != null) ConnectionPool.returnConnection(connection);
+            } catch (SQLException e) { e.printStackTrace(); }
+        }
+
+        return isSuccess;
+    }
+
+    @Override
+    public boolean deleteStorage(StorageBean storageBean) {
+        String sql = StorageQueries.deleteStorages;
+        boolean isSuccess = true;
+
+        try {
+            connection = ConnectionPool.borrowConnection();
+            preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setString(1, storageBean.getAddress());
+            if (preparedStatement.executeUpdate() == 0) isSuccess = false;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            isSuccess = false;
+        } finally {
+            try {
+                if (resultSet != null) resultSet.close();
+                if (preparedStatement != null) preparedStatement.close();
+                if (connection != null) ConnectionPool.returnConnection(connection);
+            } catch (SQLException e) { e.printStackTrace(); }
+        }
+
+        return isSuccess;
     }
 
 }
